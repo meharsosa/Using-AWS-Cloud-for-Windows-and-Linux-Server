@@ -1,0 +1,25 @@
+#Connecting to a Kali Linux using ssh
+
+ssh -i kali.pem kali@x.x.x.x
+
+#kali.pem == secret key for your machine
+#x.x.x.x == Public IP for your linux server
+
+#Update and install TightVNC Server
+sudo apt update
+
+sudo apt install xfce4 xfce4-goodies tightvncserver
+
+#Installing Gnome 
+sudot apt-get install gnome-core kali-defaults kali-root-login desktop-base
+
+#Configuring TightVNC server for resolution
+tightvncserver -geometry 1024x768
+
+#Checking status is up or not
+netstat -tulpn
+
+#Establishing ssh session with the tightvncserver
+ssh -L 5901:localhost:5901 -N -f kali@x.x.x.x -i kali.pem
+
+
